@@ -1,5 +1,55 @@
+
+<!-- <div class="login-card">
+
+    <div class="card-title">
+        <h1>Login</h1>
+        <span>You don't have an account? <a routerLink="/signup">Sign up</a></span>
+    </div>
+    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input name="email" type="email" formControlName="email" placeholder="Email">
+        <input type="password" formControlName="password" placeholder="Password">
+        <button>Submit</button>
+    </form>
+
+</div> -->
+
+
 <section class="section__register">
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="card card-small">
+            <div class="col-12 flex align-items-center justify-content-center">
+                <div class="p-fluid">
+                    <div class="field form-group">
+                        <label for="email">Email</label>
+                        <input pInputText name="email" type="email" formControlName="email" placeholder="Email"/>
+                        <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched || loginForm.controls['email'].dirty">
+                         <small class="p-error" *ngif="loginForm.controls['email'].errors?.['required']">Email is required</small> 
+                        </div>        
+                    </div>
+                    <div class="field form-group">
+                        <label for="password">Password</label>
+                        <input pInputText name="password" type="password" formControlName="password" placeholder="Password" />
+                    </div>
+                    <p-button label="Login" type="submit"></p-button>
+                </div>
+            </div>
+            <div class="col-12">
+                <p-divider layout="horizontal" class="short-devider" width="30">
+                    <b>OR</b>
+                </p-divider>
+            </div>
+            <div class="col-12 flex align-items-center justify-content-center">
+                <a [routerLink]="'/register'">
+                    <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success"></p-button>
+                </a>
+            </div>
+        </div>
+    </form>
+</section>
+
+<!-- 
+<section class="section__register">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="card card-small">
             <div class="col-12 flex align-items-center justify-content-center">
                 <div class="p-fluid">
@@ -27,7 +77,10 @@
             </div>
         </div>
     </form>
-</section>
+</section> -->
+
+
+
 
 <!-- <section class="section__register">
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">

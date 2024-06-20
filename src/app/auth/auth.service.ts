@@ -16,16 +16,28 @@ export class AuthService {
 
   baseUrl = 'http://localhost:3000';
 
-  register(username: string, email: string, password: string){
-    return this.http.post(`${this.baseUrl}/register`, {username, email, password})
+    
+  register(data: any){
+    return this.http.post(`${this.baseUrl}/register`, data)
   }
+  
+  // register(username: string, email: string, password: string){
+  //   return this.http.post(`${this.baseUrl}/register`, {username, email, password})
+  // }
 
-  login(email: string, password: string){
-    return this.http.post(`${this.baseUrl}/login`, {email, password})
+    login(data: any){
+    return this.http.post(`${this.baseUrl}/login`, data)
       .pipe(tap((result)=> {
         localStorage.setItem('authUser', JSON.stringify(result));
       }));
   }
+
+  // login(email: string, password: string){
+  //   return this.http.post(`${this.baseUrl}/login`, {email, password})
+  //     .pipe(tap((result)=> {
+  //       localStorage.setItem('authUser', JSON.stringify(result));
+  //     }));
+  // }
 
   logout(){
     localStorage.removeItem('authUser');
