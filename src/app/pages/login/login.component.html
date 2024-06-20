@@ -23,12 +23,15 @@
                         <label for="email">Email</label>
                         <input pInputText name="email" type="email" formControlName="email" placeholder="Email"/>
                         <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched || loginForm.controls['email'].dirty">
-                         <small class="p-error" *ngif="loginForm.controls['email'].errors?.['required']">Email is required</small> 
+                            <small class="p-error" *ngif="loginForm.controls['email'].errors?.['required']">Email is required</small> 
                         </div>        
                     </div>
                     <div class="field form-group">
                         <label for="password">Password</label>
                         <input pInputText name="password" type="password" formControlName="password" placeholder="Password" />
+                        <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched || loginForm.controls['password'].dirty">
+                            <small class="p-error" *ngif="loginForm.controls['password'].errors?.['required']">Password is required</small> 
+                        </div>  
                     </div>
                     <p-button label="Login" type="submit"></p-button>
                 </div>
