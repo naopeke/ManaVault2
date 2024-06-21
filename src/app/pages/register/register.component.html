@@ -9,21 +9,21 @@
                         <label for="name">Username</label>
                         <input pInputText name="username" type="text" formControlName="username" placeholder="Ajani"/>
                         <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched || registerForm.controls['username'].dirty">
-                            <small class="p-error" *ngif="loginForm.controls['username'].errors?.['required']">Username is required</small> 
+                            <div class="p-error" *ngIf="registerForm.controls['username'].errors?.['required']">Username is required</div> 
                         </div>        
                     </div>
                     <div class="field form-group">
                         <label for="email">Email</label>
                         <input pInputText name="email" type="email" formControlName="email" placeholder="ajani@example.com"/>
                         <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched || registerForm.controls['email'].dirty">
-                            <small class="p-error" *ngif="loginForm.controls['email'].errors?.['required']">Email is required</small> 
+                            <div class="p-error" *ngIf="registerForm.controls['email'].errors?.['required']">Email is required</div> 
                         </div>        
                     </div>
                     <div class="field form-group">
                         <label for="password">Password</label>
                         <input pInputText name="password" type="password" formControlName="password" placeholder="12345678" />
                         <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched || registerForm.controls['password'].dirty">
-                            <small class="p-error" *ngif="loginForm.controls['password'].errors?.['required']">Password is required</small> 
+                            <div class="p-error" *ngIf="registerForm.controls['password'].errors?.['required']">Password is required</div> 
                         </div>  
                     </div>
                     <p-button label="Sign Up" type="submit"></p-button>
