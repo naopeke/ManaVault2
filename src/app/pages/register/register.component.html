@@ -1,6 +1,4 @@
-<p>register works!</p>
-
-<section class="section__login">
+<section class="section__register flex align-items-center justify-content-center h-full pt-7 pb-5">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="card card-small">
             <div class="col-12 flex align-items-center justify-content-center">
@@ -41,7 +39,7 @@
                 </p-divider>
             </div>
             <div class="col-12 flex align-items-center justify-content-center">
-                You already have your account?&nbsp; <a [routerLink]="'/login'">Login</a>
+                You already have your account?&nbsp; <a [routerLink]="'/login'" class="text-decoration: no-underline font-semibold">Login</a>
             </div>
         </div>
     </form>
