@@ -11,10 +11,12 @@
         <button>Submit</button>
     </form>
 
-</div> -->
+</div>  -->
 
 
-<section class="section__register">
+
+
+<section class="section__login">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="card card-small">
             <div class="col-12 flex align-items-center justify-content-center">
@@ -36,8 +38,8 @@
                     <p-button label="Login" type="submit"></p-button>
                 </div>
             </div>
-            <div class="col-12">
-                <p-divider layout="horizontal" class="short-devider" width="30">
+            <div class="col-12 flex align-items-center justify-content-center" style="width:100%">
+                <p-divider align="center" class="short-devider" width="50">
                     <b>OR</b>
                 </p-divider>
             </div>

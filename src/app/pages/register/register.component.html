@@ -1,1 +1,69 @@
 <p>register works!</p>
+
+<section class="section__login">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="card card-small">
+            <div class="col-12 flex align-items-center justify-content-center">
+                <div class="p-fluid">
+                    <div class="field form-group">
+                        <label for="name">Username</label>
+                        <input pInputText name="username" type="text" formControlName="username" placeholder="Ajani"/>
+                        <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched || registerForm.controls['username'].dirty">
+                            <small class="p-error" *ngif="loginForm.controls['username'].errors?.['required']">Username is required</small> 
+                        </div>        
+                    </div>
+                    <div class="field form-group">
+                        <label for="email">Email</label>
+                        <input pInputText name="email" type="email" formControlName="email" placeholder="ajani@example.com"/>
+                        <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched || registerForm.controls['email'].dirty">
+                            <small class="p-error" *ngif="loginForm.controls['email'].errors?.['required']">Email is required</small> 
+                        </div>        
+                    </div>
+                    <div class="field form-group">
+                        <label for="password">Password</label>
+                        <input pInputText name="password" type="password" formControlName="password" placeholder="12345678" />
+                        <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched || registerForm.controls['password'].dirty">
+                            <small class="p-error" *ngif="loginForm.controls['password'].errors?.['required']">Password is required</small> 
+                        </div>  
+                    </div>
+                    <p-button label="Sign Up" type="submit"></p-button>
+                </div>
+            </div>
+            <div class="col-12">
+                <p-divider layout="horizontal" class="short-devider" width="30">
+                </p-divider>
+            </div>
+            <div class="col-12 flex align-items-center justify-content-center">
+                You already have your account?&nbsp; <a [routerLink]="'/register'">Login</a>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+<section class="section__register">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="card card-small">
+            <div class="col-12 md:col-6 align-items-center justify-content-center">
+                <div class="card p-fluid">
+                    <div class="field">
+                        <label htmlFor="name">Name</label>
+                        <input pInputText id="name" type="text" />
+                    </div>
+                    <div class="field">
+                        <label htmlFor="email">Email</label>
+                        <input pInputText id="email" type="text" />
+                    </div>
+                    <div class="field">
+                        <label htmlFor="age1">Password</label>
+                        <input pInputText id="password1" type="text" />
+                    </div>
+                    <div class="field">
+                        <label htmlFor="age1">Password</label>
+                        <input pInputText id="password2" type="text" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

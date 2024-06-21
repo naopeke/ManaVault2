@@ -9,6 +9,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
+import { FloatLabelModule } from "primeng/floatlabel"  
 import { invalidEmailValidator } from '../../shared/invalid-email.validator';
 import { invalidPasswordValidator } from '../../shared/invalid-password.validator';
 import { CommonModule } from '@angular/common';
@@ -17,7 +18,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule,FormsModule, ButtonModule, InputGroupModule, InputGroupAddonModule, InputTextModule, PasswordModule, DividerModule, ReactiveFormsModule, CommonModule],
+  imports: [RouterModule,FormsModule, ButtonModule, InputGroupModule, InputGroupAddonModule, InputTextModule, PasswordModule, DividerModule, FloatLabelModule, ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
