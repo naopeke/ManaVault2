@@ -19,6 +19,7 @@ import { DividerModule } from 'primeng/divider';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  value!: string;
 
   authService = inject(AuthService);
   router = inject(Router);

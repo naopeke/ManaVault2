@@ -21,7 +21,14 @@
                     </div>
                     <div class="field form-group">
                         <label for="password">Password</label>
-                        <input pInputText name="password" type="password" formControlName="password" placeholder="12345678" />
+                        <!-- <input pInputText name="password" type="password" formControlName="password" placeholder="12345678" /> -->
+                        <p-password 
+                            name="password"
+                            formControlName="password"
+                            [toggleMask]="true" 
+                            placeholder="12345678"
+                        >
+                        </p-password>
                         <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched || registerForm.controls['password'].dirty">
                             <div class="p-error" *ngIf="registerForm.controls['password'].errors?.['required']">Password is required</div> 
                         </div>  
@@ -34,13 +41,13 @@
                 </p-divider>
             </div>
             <div class="col-12 flex align-items-center justify-content-center">
-                You already have your account?&nbsp; <a [routerLink]="'/register'">Login</a>
+                You already have your account?&nbsp; <a [routerLink]="'/login'">Login</a>
             </div>
         </div>
     </form>
 </section>
 
-
+<!-- 
 <section class="section__register">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="card card-small">
@@ -66,4 +73,4 @@
             </div>
         </div>
     </form>
-</section>
+</section> -->
