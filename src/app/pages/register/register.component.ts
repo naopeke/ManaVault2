@@ -9,16 +9,18 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule, ButtonModule, InputGroupModule, InputGroupAddonModule, InputTextModule, PasswordModule, DividerModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, ButtonModule, InputGroupModule, InputGroupAddonModule, InputTextModule, PasswordModule, DividerModule, FormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+
   value!: string;
 
   authService = inject(AuthService);

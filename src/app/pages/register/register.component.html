@@ -4,25 +4,26 @@
             <div class="col-12 flex align-items-center justify-content-center">
                 <div class="p-fluid">
                     <div class="field form-group">
-                        <label for="name">Username</label>
+                        <label for="name" class="font-semibold">Username</label>
                         <input pInputText name="username" type="text" formControlName="username" placeholder="Ajani"/>
                         <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched || registerForm.controls['username'].dirty">
                             <div class="p-error" *ngIf="registerForm.controls['username'].errors?.['required']">Username is required</div> 
                         </div>        
                     </div>
                     <div class="field form-group">
-                        <label for="email">Email</label>
+                        <label for="email" class="font-semibold">Email</label>
                         <input pInputText name="email" type="email" formControlName="email" placeholder="ajani@example.com"/>
                         <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched || registerForm.controls['email'].dirty">
                             <div class="p-error" *ngIf="registerForm.controls['email'].errors?.['required']">Email is required</div> 
                         </div>        
                     </div>
                     <div class="field form-group">
-                        <label for="password">Password</label>
+                        <label for="password" class="font-semibold">Password</label>
                         <!-- <input pInputText name="password" type="password" formControlName="password" placeholder="12345678" /> -->
                         <p-password 
                             name="password"
                             formControlName="password"
+                            [feedback]="false"
                             [toggleMask]="true" 
                             placeholder="12345678"
                         >
