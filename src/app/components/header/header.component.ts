@@ -56,61 +56,61 @@ export class HeaderComponent implements OnInit{
 //                     email: user.email!,
 //                     username: user.displayName!,
 //                 });
-//                 this.navItems = [
-//                     {
-//                       label: 'Home',
-//                       icon: 'pi pi-home',
-//                       routerLink: '/',
-//                     },
-//                     {
-//                       label: 'Advanced Search',
-//                       icon: 'pi pi-search',
-//                       routerLink: 'advanced'
-//                   },
-//                     {
-//                         label: 'Deck Builder',
-//                         icon: 'pi pi-star',
-//                         items: [
-//                             {
-//                                 label: 'All',
-//                                 icon: 'pi pi-bolt',
-//                                 routerLink: 'deckbuilder'
-//                             },
-//                             {
-//                                 label: 'Add',
-//                                 icon: 'pi pi-server'
-//                             },
-//                             {
-//                                 label: 'Edit',
-//                                 icon: 'pi pi-pencil'
-//                             },
-//                             {
-//                                 label: 'Templates',
-//                                 icon: 'pi pi-palette',
-//                                 items: [
-//                                     {
-//                                         label: 'Apollo',
-//                                         icon: 'pi pi-palette'
-//                                     },
-//                                     {
-//                                         label: 'Ultima',
-//                                         icon: 'pi pi-palette'
-//                                     }
-//                                 ]
-//                             }
-//                         ]
-//                     },
-//                     {
-//                         label: 'Contact',
-//                         icon: 'pi pi-envelope',
-//                         routerLink: 'contact',
-//                     },
-//                     {
-//                         label: 'Sign Out',
-//                         icon: 'pi pi-envelope',
-//                         routerLink: 'login',
-//                     }
-//                 ]
+                this.navItems = [
+                    {
+                      label: 'Home',
+                      icon: 'pi pi-home',
+                      routerLink: '/',
+                    },
+                    {
+                      label: 'Advanced Search',
+                      icon: 'pi pi-search',
+                      routerLink: 'advanced'
+                  },
+                    {
+                        label: 'Deck Builder',
+                        icon: 'pi pi-star',
+                        items: [
+                            {
+                                label: 'All',
+                                icon: 'pi pi-bolt',
+                                routerLink: 'deckbuilder'
+                            },
+                            {
+                                label: 'Add',
+                                icon: 'pi pi-server'
+                            },
+                            {
+                                label: 'Edit',
+                                icon: 'pi pi-pencil'
+                            },
+                            // {
+                            //     label: 'Templates',
+                            //     icon: 'pi pi-palette',
+                            //     items: [
+                            //         {
+                            //             label: 'Apollo',
+                            //             icon: 'pi pi-palette'
+                            //         },
+                            //         {
+                            //             label: 'Ultima',
+                            //             icon: 'pi pi-palette'
+                            //         }
+                            //     ]
+                            // }
+                        ]
+                    },
+                    {
+                        label: 'Contact',
+                        icon: 'pi pi-envelope',
+                        routerLink: 'contact',
+                    },
+                    {
+                        label: 'Sign Out',
+                        icon: 'pi pi-sign-out',
+                        routerLink: 'login',
+                    }
+                ]
 
 
 //             } else {
