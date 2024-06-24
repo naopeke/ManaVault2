@@ -1,3 +1,27 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+/* グローバルリセットは避ける */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* ボックスサイズを境界ボックスに設定 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 必要に応じて特定のコンテナにスペースを追加 */
+.container {
+    padding: 0 15px;
+}
