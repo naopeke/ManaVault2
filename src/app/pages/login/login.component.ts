@@ -35,15 +35,29 @@ export class LoginComponent {
   onSubmit(){
     if(this.loginForm.valid){
       console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value)
-      .subscribe((data: any) => {
-        if(this.authService.isLoggedIn()){
-          this.router.navigate(['/admin']);
-        }
-        console.log(data);
-      });
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (data: any) => {
+          console.log('submited data', data);
+          if (this.authService.isLoggedIn()){
+            this.router.navigate(['/home']);
+          }
+        },
+
+        error: (err) => console.log ('Error onSubmit', err)
+      })
+
+
+
+      //   next: (data:any) => {
+      //     console.log('submited', data);
+      //     if(this.authService.isLoggedIn()){
+      //       this.router.navigate(['/admin']);
+      //     },
+      //     error: (err) => console.log('Error onSubmit', err);   
+      // });
     }
-  }
+    }
+  // }
 
   // onSubmit(form: NgForm): void{
   //   if (form.valid){

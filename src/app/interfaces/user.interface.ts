@@ -1,7 +1,7 @@
 export interface UserInterface  {
-    userId?: number;
+    user_id?: number;
     email?: string;
     password?: string;
     username?: string;
-    photoURL?: string;
+    img_uri?: string;
   }

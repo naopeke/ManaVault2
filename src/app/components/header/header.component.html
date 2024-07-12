@@ -18,7 +18,7 @@
                     <p-avatar image="https://i.postimg.cc/xTKNLFT0/avaterdefault.png" shape="circle" />
                 </a>
             </div>
-            @if(authService.currentUserSig()){
+            @if(authService.state$()){
                 <div>
                     <!-- {{authService.currentUserSig()?.username}} -->
                     <span (click)="logOut()">Logout</span>

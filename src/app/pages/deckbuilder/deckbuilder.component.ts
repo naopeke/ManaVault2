@@ -12,10 +12,12 @@ import { UserInterface } from '../../interfaces/user.interface';
 export class DeckbuilderComponent implements OnInit {
 
   authService = inject(AuthService);
-  user = signal<UserInterface | null | undefined>(undefined);
+  // user = signal<UserInterface | null | undefined>(undefined);
+
+  user = this.authService.state$;
 
   ngOnInit(): void {
-    this.user = this.authService.currentUserSig;
+    this.user = this.authService.state$;
     console.log('userdata in deckbuilder', this.user);
   }
 }
