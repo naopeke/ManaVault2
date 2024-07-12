@@ -7,6 +7,8 @@ export function invalidEmailValidator(emailRe: RegExp): ValidatorFn {
     }
 }
 
+export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 //https://angular.dev/guide/forms/form-validation#defining-custom-validators
 
 //https://angular.dev/guide/forms/form-validation

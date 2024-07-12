@@ -12,6 +12,8 @@ import { DividerModule } from 'primeng/divider';
 import { FloatLabelModule } from "primeng/floatlabel"  
 import { invalidEmailValidator } from '../../shared/invalid-email.validator';
 import { invalidPasswordValidator } from '../../shared/invalid-password.validator';
+import { emailRegex } from '../../shared/invalid-email.validator';
+import { passwordRegex } from '../../shared/invalid-password.validator';
 import { CommonModule } from '@angular/common';
 
 
@@ -28,8 +30,8 @@ export class LoginComponent {
   router = inject(Router);
 
   protected loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email, invalidEmailValidator(/test/i)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8), invalidPasswordValidator(/test/i)])
+    email: new FormControl('', [Validators.required, Validators.email, invalidEmailValidator(emailRegex)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8), invalidPasswordValidator(passwordRegex)])
   })
 
   onSubmit(){
