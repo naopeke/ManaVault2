@@ -6,7 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdvancedComponent } from './pages/advanced/advanced.component';
 import { DeckbuilderComponent } from './pages/deckbuilder/deckbuilder.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { authGuard } from './auth/auth.guard';
+import { authGuard } from './services/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },

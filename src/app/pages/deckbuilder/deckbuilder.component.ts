@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { UserInterface } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-deckbuilder',
@@ -7,6 +9,13 @@ import { Component } from '@angular/core';
   templateUrl: './deckbuilder.component.html',
   styleUrl: './deckbuilder.component.css'
 })
-export class DeckbuilderComponent {
+export class DeckbuilderComponent implements OnInit {
 
+  authService = inject(AuthService);
+  user = signal<UserInterface | null | undefined>(undefined);
+
+  ngOnInit(): void {
+    this.user = this.authService.currentUserSig;
+    console.log('userdata in deckbuilder', this.user);
+  }
 }

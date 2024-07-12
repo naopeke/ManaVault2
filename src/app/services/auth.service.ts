@@ -15,6 +15,7 @@ export class AuthService {
   http = inject(HttpClient);
 
   baseUrl = 'http://localhost:3000';
+  // baseUrl= 'https://mana-vault-api.vercel.app/';
 
     
   register(data: any){
@@ -29,6 +30,7 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, data)
       .pipe(tap((result)=> {
         localStorage.setItem('authUser', JSON.stringify(result));
+        this.currentUserSig.set(result); // update signal
       }));
   }
 
@@ -41,6 +43,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('authUser');
+    this.currentUserSig.set(null); // reset signal
   }
 
   isLoggedIn(){
