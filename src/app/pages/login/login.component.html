@@ -30,9 +30,19 @@
                     </div>
                     <div class="field form-group">
                         <label for="password">Password</label>
-                        <input pInputText name="password" type="password" formControlName="password" placeholder="Password" />
+                        <!-- <input pInputText name="password" type="password" formControlName="password" placeholder="Password" /> -->
+                        <p-password 
+                        name="password"
+                        formControlName="password"
+                        [feedback]="false"
+                        [toggleMask]="true" 
+                        placeholder="12345678"
+                    >
+                    </p-password>
                         <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched || loginForm.controls['password'].dirty">
                             <div class="p-error" *ngIf="loginForm.controls['password'].errors?.['required']">Password is required</div> 
+                            <div class="p-error" *ngIf="loginForm.controls['password'].errors?.['minlength']">Password must be at least 8 characters long</div>
+                            <div class="p-error" *ngIf="loginForm.controls['password'].errors?.['invalidPassword']">Password must contain at least one uppercase letter, one lowercase letter, and one number</div>
                         </div>  
                     </div>
                     <p-button label="Login" type="submit"></p-button>

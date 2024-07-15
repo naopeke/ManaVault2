@@ -10,10 +10,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { FloatLabelModule } from "primeng/floatlabel"  
-import { invalidEmailValidator } from '../../shared/invalid-email.validator';
-import { invalidPasswordValidator } from '../../shared/invalid-password.validator';
-import { emailRegex } from '../../shared/invalid-email.validator';
-import { passwordRegex } from '../../shared/invalid-password.validator';
+import { invalidEmailValidator, emailRegex } from '../../shared/invalid-email.validator';
+import { invalidPasswordValidator, passwordRegex } from '../../shared/invalid-password.validator';
 import { CommonModule } from '@angular/common';
 
 
