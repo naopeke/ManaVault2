@@ -29,7 +29,7 @@ export class LoginComponent {
 
   protected loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, invalidEmailValidator(emailRegex)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8), invalidPasswordValidator(passwordRegex)])
+    password: new FormControl('', [Validators.required])
   })
 
   onSubmit(){

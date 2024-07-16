@@ -3,6 +3,7 @@ import { Observable, from } from 'rxjs';
 import { UserInterface } from '../interfaces/user.interface';
 import { AuthState } from '../interfaces/auth.interface';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 
@@ -60,47 +61,55 @@ export class AuthService {
 
   public state$ = signal<AuthState>({
     user:null,
+    token: null,
     is_auth: false,
     loading: false
   });
 
-  user = computed(() => this.state$().user);  
+  user = computed(() => this.state$().user);
+  token = computed(() => this.state$().token);  
   isAuth = computed(() => this.state$().is_auth);
   loading = computed(() => this.state$().loading);
 
   http = inject(HttpClient);
+  router = inject(Router);
 
   baseUrl = 'http://localhost:3000';
   // baseUrl= 'https://mana-vault-api.vercel.app/';
 
   // for local storage
-  private _userKey = 'authUser';
+  // private _userKey = 'authUser'; // to save user info
+  private _accessTokenKey = 'accessToken'; // to save token
+  private _storedToken = localStorage.getItem(this._accessTokenKey);
+
 
   constructor(){
-    const authUser = localStorage.getItem(this._userKey);
-    console.log(authUser);
+    // const authUser = localStorage.getItem(this._userKey);
+    // console.log(authUser);
 
-    if (authUser) {
-      try {
-        const parsedUser = JSON.parse(authUser) as UserInterface;
-        this.state$.update(state => ({
-          ...state,
-          user: parsedUser,
-          is_auth: true,
-          loading: false
-        }));
+    // if (authUser) {
+    //   try {
+    //     const parsedUser = JSON.parse(authUser) as UserInterface;
+    //     this.state$.update(state => ({
+    //       ...state,
+    //       user: parsedUser,
+    //       is_auth: true,
+    //       loading: false
+    //     }));
 
-      } catch (err) {
-        console.error('Error parsing authUser from localStorage', err);
-      }
-    }
+    //   } catch (err) {
+    //     console.error('Error parsing authUser from localStorage', err);
+    //   }
+    // }
 
+    // 
+    
     effect(() => {
-      const user = this.user();
-      if (user !== null){
-        localStorage.setItem(this._userKey, JSON.stringify(user));
+      const token = this.token();
+      if (token !== null){
+        localStorage.setItem(this._accessTokenKey, token);
       } else {
-        localStorage.removeItem(this._userKey);
+        localStorage.removeItem(this._accessTokenKey);
       }
     });
   }
@@ -112,6 +121,7 @@ export class AuthService {
         this.state$.update(state => ({
           ...state,
           user: result.user,
+          token: result.token,
           is_auth: true,
           loading: false
         }))
@@ -125,9 +135,11 @@ export class AuthService {
       this.state$.update(state => ({
         ...state,
         user: result.user,
+        token: result.token,
         is_auth: true,
         loading: false
       }));
+      this.router.navigate(['/home']);
     }));
   }
 
@@ -135,9 +147,11 @@ export class AuthService {
     this.state$.update(state => ({
       ...state,
       user: null,
+      token: null,
       is_auth: false,
       loading: false
     }));
+    this.router.navigate(['/login']);
   }
 
 
