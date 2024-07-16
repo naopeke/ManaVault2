@@ -10,6 +10,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { FormsModule } from '@angular/forms';
+import { invalidPasswordValidator, passwordRegex } from '../../shared/invalid-password.validator';
+
 
 
 @Component({
@@ -29,7 +31,7 @@ export class RegisterComponent {
   protected registerForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+    password: new FormControl('', [Validators.required, invalidPasswordValidator(passwordRegex)])
   })
 
   public onSubmit(){
