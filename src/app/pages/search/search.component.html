@@ -1,0 +1,5 @@
+
+<div class="card flex justify-content-center">
+    <p-button label="Toggle" (onClick)="menu.toggle($event)" />
+    <p-tieredMenu #menu [model]="items" [popup]="true" />
+</div>
