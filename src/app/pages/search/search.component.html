@@ -1,5 +1,19 @@
 
 <div class="card flex justify-content-center">
-    <p-button label="Toggle" (onClick)="menu.toggle($event)" />
-    <p-tieredMenu #menu [model]="items" [popup]="true" />
+    <p-sidebar [(visible)]="sidebarVisible" styleClass="w-15rem">
+        <!-- <p-tieredMenu #menu [model]="items" /> -->
+         <app-menu></app-menu>
+    </p-sidebar>
+    <p-button (onClick)="sidebarVisible = true" icon="pi pi-bars" />
+</div>
+
+
+<div class="card flex justify-content-center gap-2">
+    <p-tag value="Primary"/>
+    <p-tag severity="success" value="Success"/>
+    <p-tag severity="secondary" value="Secondary"/>
+    <p-tag severity="info" value="Info"/>
+    <p-tag severity="warning" value="Warning"/>
+    <p-tag severity="danger" value="Danger"/>
+    <p-tag severity="contrast" value="Contrast"/>
 </div>

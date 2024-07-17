@@ -1,0 +1,4 @@
+.p-sidebar .p-tieredmenu {
+    border: none !important; /* Remove the border */
+    box-shadow: none !important; /* Remove the shadow */
+  }

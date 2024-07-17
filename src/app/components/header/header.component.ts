@@ -63,10 +63,15 @@ export class HeaderComponent implements OnInit{
                       routerLink: '/',
                     },
                     {
+                        label: 'Search',
+                        icon: 'pi pi-search',
+                        routerLink: 'search'
+                      },
+                    {
                       label: 'Advanced Search',
                       icon: 'pi pi-search',
                       routerLink: 'advanced'
-                  },
+                    },
                     {
                         label: 'Deck Builder',
                         icon: 'pi pi-star',
