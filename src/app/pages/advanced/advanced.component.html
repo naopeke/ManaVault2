@@ -1,1 +1,42 @@
-<p>advanced works!</p>
+<div class="flex justify-content-center">
+    <div class="card flex flex-column gap-3 w-5">
+        
+        <i class="bx bx-credit-card-front">&nbsp;Card</i> 
+            <input type="text" pInputText placeholder="One Ring" />
+        
+        <i class="bx bx-notepad">&nbsp;Text</i>
+            <input type="text" pInputText placeholder="Draw a card"/>
+        
+        <i class='bx bx-color' >&nbsp;Colors</i>
+            <p-multiSelect 
+                [options]="colors" 
+                [(ngModel)]="selectedColors" 
+                placeholder="Select Colors" 
+                optionLabel="name" 
+                display="chip" 
+                [showClear]="true">
+            </p-multiSelect>
+
+        <i class='bx bx-shield-alt-2' >&nbsp;Commander Color</i>
+            <p-multiSelect 
+            [options]="colors" 
+            [(ngModel)]="selectedColorsCommander" 
+            placeholder="Select Colors" 
+            optionLabel="name" 
+            display="chip" 
+            [showClear]="true">
+            </p-multiSelect>
+
+        <i class='bx bx-coin' >&nbsp;Mana Cost</i>
+            <p-multiSelect 
+            [options]="manaCost" 
+            [(ngModel)]="selectedManaCost" 
+            placeholder="Select Mana Cost" 
+            optionLabel="name" 
+            display="chip" 
+            [showClear]="true">
+            </p-multiSelect>
+        
+    </div>
+</div>
+
