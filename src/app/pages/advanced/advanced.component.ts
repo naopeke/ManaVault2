@@ -7,6 +7,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 interface Colors {
   name: string,
@@ -16,7 +17,7 @@ interface Colors {
 @Component({
   selector: 'app-advanced',
   standalone: true,
-  imports: [FormsModule, InputGroupModule, InputGroupAddonModule, InputTextModule, MultiSelectModule, InputIconModule, IconFieldModule],
+  imports: [FormsModule, InputGroupModule, InputGroupAddonModule, InputTextModule, MultiSelectModule, InputIconModule, IconFieldModule, CommonModule],
   templateUrl: './advanced.component.html',
   styleUrl: './advanced.component.css'
 })

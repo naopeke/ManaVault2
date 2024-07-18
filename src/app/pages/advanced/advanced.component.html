@@ -11,21 +11,69 @@
             <p-multiSelect 
                 [options]="colors" 
                 [(ngModel)]="selectedColors" 
-                placeholder="Select Colors" 
-                optionLabel="name" 
-                display="chip" 
-                [showClear]="true">
-            </p-multiSelect>
+                placeholder="Select a Color"
+                display="chip"
+                [showClear]="true" >
+            <ng-template let-value pTemplate="selectedItems">
+                <div class="inline-flex align-items-center gap-2 px-1" *ngFor="let option of value">
+                    <img 
+                    [src]="'https://svgs.scryfall.io/card-symbols/' + option.code.toUpperCase() + '.svg'" 
+                        style="width: 18px" />
+                    <!-- <div>{{ option.name }},</div> -->
+                </div>
+                <div *ngIf="!value || value.length === 0">Select Colors</div>
+            </ng-template>
+            <ng-template let-color pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <img 
+                    [src]="'https://svgs.scryfall.io/card-symbols/' + color.code.toUpperCase() + '.svg'" 
+                        style="width: 18px" />
+                    <div>{{ color.name }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-color pTemplate="footer">
+                <div class="py-2 px-3">
+                    <b>
+                    {{ selectedColors ? selectedColors.length : 0 }}
+                    </b> 
+                    item{{ (selectedColors ? selectedColors.length : 0) > 1 ? 's' : '' }} selected.
+                </div>
+            </ng-template>
+    </p-multiSelect>
 
         <i class='bx bx-shield-alt-2' >&nbsp;Commander Color</i>
             <p-multiSelect 
-            [options]="colors" 
-            [(ngModel)]="selectedColorsCommander" 
-            placeholder="Select Colors" 
-            optionLabel="name" 
-            display="chip" 
-            [showClear]="true">
-            </p-multiSelect>
+                [options]="colors" 
+                [(ngModel)]="selectedColorsCommander" 
+                placeholder="Select a Color"
+                display="chip"
+                [showClear]="true" >
+            <ng-template let-value pTemplate="selectedItems">
+                <div class="inline-flex align-items-center gap-2 px-1" *ngFor="let option of value">
+                    <img 
+                    [src]="'https://svgs.scryfall.io/card-symbols/' + option.code.toUpperCase() + '.svg'" 
+                        style="width: 18px" />
+                    <!-- <div>{{ option.name }},</div> -->
+                </div>
+                <div *ngIf="!value || value.length === 0">Select Colors</div>
+            </ng-template>
+            <ng-template let-color pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <img 
+                    [src]="'https://svgs.scryfall.io/card-symbols/' + color.code.toUpperCase() + '.svg'" 
+                        style="width: 18px" />
+                    <div>{{ color.name }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-color pTemplate="footer">
+                <div class="py-2 px-3">
+                    <b>
+                    {{ selectedColorsCommander ? selectedColorsCommander.length : 0 }}
+                    </b> 
+                    item{{ (selectedColorsCommander ? selectedColorsCommander.length : 0) > 1 ? 's' : '' }} selected.
+                </div>
+            </ng-template>
+    </p-multiSelect>
 
         <i class='bx bx-coin' >&nbsp;Mana Cost</i>
             <p-multiSelect 
