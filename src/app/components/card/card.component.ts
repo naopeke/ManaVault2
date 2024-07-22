@@ -32,6 +32,9 @@ export class CardComponent {
   //   this.onIncrementQuantity.emit(this.card().quantity + 1);
   // }
 
+  public cardClick():void {
+    this.childCardClicked.emit(this.card());
+  }
 
 
 }
