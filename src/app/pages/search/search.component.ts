@@ -14,7 +14,7 @@ import { Card } from '../../interfaces/card.interface';
 import { CardComponent } from '../../components/card/card.component';
 import { interval } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
-
+import { CardsService } from '../../services/cards.service';
 
 @Component({
   selector: 'app-search',
@@ -27,85 +27,38 @@ import { tap, take } from 'rxjs/operators';
 export class SearchComponent implements OnInit {
   items: MenuItem[] | undefined;
   sidebarVisible: boolean = false;
+  searchPerformed = signal(false);
+  errorMessage = signal<string | null>(null);
+  resultsCards = signal<Card[]>([]);
+  cards = signal<Card[]>([]);
 
-  public cards = signal<Card[]>([
-    {
-        card_id: 1,
-        id: "d99a9a7d-d9ca-4c11-80ab-e39d5943a315",
-        user_id: 1,
-        image_uris: "https://cards.scryfall.io/small/front/d/9/d99a9a7d-d9ca-4c11-80ab-e39d5943a315.jpg?1632831210",
-        name: "Asmoranomardicadaistinaculdacar",
-        // printed_name?: string,
-        // type_line?: string,
-        // oracle_text?: string,
-        // printed_text?: string,
-        // color_identity?: string[],
-        // legalities?: any,
-        // prices?: number,
-        // set_name?: string,
-        // set_type?: string,
-        // quantity?: number,
-        // deckCard_id?: number
-    },
-    {
-        card_id: 2,
-        id: "c7e6915b-2077-45aa-93e7-29b5f14beb51",
-        user_id: 1,
-        image_uris:  "https://cards.scryfall.io/small/front/c/7/c7e6915b-2077-45aa-93e7-29b5f14beb51.jpg?1572374034",
-        name: "Half-Orc, Half-",
-        // printed_name?: string,
-        // type_line?: string,
-        // oracle_text?: string,
-        // printed_text?: string,
-        // color_identity?: string[],
-        // legalities?: any,
-        // prices?: number,
-        // set_name?: string,
-        // set_type?: string,
-        // quantity?: number,
-        // deckCard_id?: number
-    },
-    {
-        card_id: 3,
-        id: "70668650-0fb1-4486-a4e6-ab9a12be5626",
-        user_id: 1,
-        image_uris:  "https://cards.scryfall.io/small/front/7/0/70668650-0fb1-4486-a4e6-ab9a12be5626.jpg?1682203019",
-        name: "Captive Weird",
-        // printed_name?: string,
-        // type_line?: string,
-        // oracle_text?: string,
-        // printed_text?: string,
-        // color_identity?: string[],
-        // legalities?: any,
-        // prices?: number,
-        // set_name?: string,
-        // set_type?: string,
-        // quantity?: number,
-        // deckCard_id?: number
+
+    constructor (private cardsService: CardsService){}
+
+
+  
+
+    searchCards(cardName: string): void {
+      this.searchPerformed.set(true);
+      this.errorMessage.set(null); // cada vez busca, refresh
+
+      const formattedCardName = cardName.split(' ').join('+');
+  
+      this.cardsService.getByName(`${this.cardsService.url}/cards`, formattedCardName).subscribe({
+        next: (data:any) => {
+          this.resultsCards.set(Array.isArray(data) ? data : [data]); // データが配列か確認
+          this.errorMessage.set(null); // refresh errorMessage
+          console.log('ErrorMessage', this.errorMessage());
+        },
+        error: (err) => {
+          this.resultsCards.set([]);
+          console.log('Error in fetching cards:', err);
+          this.errorMessage.set('There are too many cards results') ;
+          console.log('Error message', this.errorMessage());
+        }
+      });
     }
-  ])
-
-  private intervalSubscription = interval(1000)
-    .pipe(
-      tap(() => {
-        this.cards.update((cards) => [
-          ...cards,
-          {
-            card_id: cards.length + 1,
-            id: '',
-            user_id: 1,
-            image_uris: '',
-            name: '',
-          }
-        ]);
-      }),
-      take(7)
-    )
-    .subscribe();
-
-    ngOnDestroy():void {
-        this.intervalSubscription.unsubscribe();
-    }
+  
     
   ngOnInit() {
       this.items = [

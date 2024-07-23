@@ -1,7 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Card } from '../interfaces/card.interface';
+
+// Curried function for making HTTP requests
+const createRequest = (http: HttpClient) => (method: string) => (url: string) => (body?: any) => {
+  return http.request(method, url, {body});
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +15,13 @@ import { Card } from '../interfaces/card.interface';
 export class CardsService {
 
   //local server
-  private url:string = 'http://localhost:3000';
+  public url:string = 'http://localhost:3000';
 
   //production server
   // private url = '"https://mana-vault-api.vercel.app";'
+
+  private http = inject(HttpClient);
+  private request = createRequest(this.http);
 
 
   //初期値
@@ -36,7 +45,8 @@ export class CardsService {
 
   }
 
-  constructor(private http:HttpClient) { }
+
+  // constructor(private http:HttpClient) { }
 
   public fetchCardData(cardName: string): Observable<Card> {
     let urlName = `${this.url}/cards?cardName=${encodeURIComponent(cardName)}`;
@@ -44,9 +54,17 @@ export class CardsService {
   }
 
 
-  public getByName(cardName:string):Observable<Card[]>{
-    let urlName = `${this.url}/cards?cardName=${encodeURIComponent(cardName)}`;
-    return this.http.get<Card[]>(urlName);
+  // public getByName(cardName:string):Observable<Card[]>{
+  //   let urlName = `${this.url}/cards?cardName=${encodeURIComponent(cardName)}`;
+  //   return this.http.get<Card[]>(urlName);
+  // }
+
+  // public getByName(url: string, cardName: string){
+  //   return this.request('GET')(`${url}/cards?cardName=${encodeURIComponent(cardName)}`)();
+  // }
+
+  public getByName(url: string, cardName: string){
+    return this.request('GET')(`${url}?cardName=${cardName}`)();
   }
 
   public addCardsToDeck(cardApiIds: string[], user_id: number, indexDeck: number): Observable<any> {
