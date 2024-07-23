@@ -1,15 +1,23 @@
 <div class="card flex justify-content-center">
-    <p-card header={{card().name}} subheader="Card Subheader" [style]="{ width: '360px' }" (click)="cardClick()">
+    <p-card header={{card().name}} subheader={{card().type_line}} [style]="{ width: '360px' }" (click)="cardClick()">
         <ng-template pTemplate="header">
             <img alt="Card" src={{card().image_uris}}/>
         </ng-template>
-        <p>
-            {{card().name}}
-        </p>
         <ng-template pTemplate="footer">
             <div class="flex gap-3 mt-1">
                 <p-button label="Cancel" severity="secondary" class="w-full" styleClass="w-full" />
-                <p-button label="Save" class="w-full" styleClass="w-full" />
+                <p-button label="Detail" class="w-full" styleClass="w-full" (onClick)="showDialog()" label="Show" />
+                <p-dialog 
+                    header="Header" 
+                    [modal]="true"
+                    [(visible)]="visible" 
+                    [style]="{ width: '50rem' }" 
+                    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
+                    [maximizable]="true">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                        </p>
+                </p-dialog>
             </div>
         </ng-template>
     </p-card>

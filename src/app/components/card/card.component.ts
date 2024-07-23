@@ -4,13 +4,13 @@ import { CardInfoComponent } from '../card-info/card-info.component';
 import { Card } from '../../interfaces/card.interface';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-
+import { DialogModule } from 'primeng/dialog';
 
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, ButtonModule, CardModule],
+  imports: [CommonModule, ButtonModule, CardModule, DialogModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
@@ -27,6 +27,8 @@ export class CardComponent {
   public childCardClicked = output<Card>();
   // @Output() childCardClicked = new EventEmitter<Card>();
 
+  //Dialog
+  public visible: boolean = false;
 
   // public incrementQuantity():void {
   //   this.onIncrementQuantity.emit(this.card().quantity + 1);
@@ -36,5 +38,8 @@ export class CardComponent {
     this.childCardClicked.emit(this.card());
   }
 
+  public showDialog() {
+    this.visible = true;
+}
 
 }
