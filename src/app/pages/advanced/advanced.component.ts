@@ -95,30 +95,6 @@ export class AdvancedComponent implements OnInit{
         {name: '1 red mana or 2 life', code: '{R/P}'},
         {name: '1 green mana or 2 life', code: '{G/P}'},
         {name: '1 snow mana', code: '{S}'},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
     ];
   }
 
